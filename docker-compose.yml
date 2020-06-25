@@ -5,8 +5,6 @@ services:
     image: 'postgres:9.5'
     volumes:
       - 'postgres:/var/lib/postgresql/data'
-    environment:
-      POSTGRES_HOST_AUTH_METHOD: "trust"
 
   redis:
     image: 'redis:3.2-alpine'
@@ -48,10 +46,10 @@ services:
       - /box
 
   mailcatcher:
-   image: tophfr/mailcatcher
-   ports:
-     - 1025:25
-     - 1080:80
+    image: tophfr/mailcatcher
+    ports:
+      - 1025:25
+      - 1080:80
 
 volumes:
   redis:

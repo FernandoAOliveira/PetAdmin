@@ -7,11 +7,12 @@ default: &default
 
 development:
   <<: *default
-  database: opetadmin_development
+  database: apetadmin_development
 
 test:
   <<: *default
-  database: opetadmin_exchance_test
+  database: apetadmin_exchance_test
 
 production:
   <<: *default
+  database: apetadmin_exchance_production
