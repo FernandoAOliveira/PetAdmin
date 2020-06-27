@@ -1,4 +1,4 @@
-class Sell &lt; ApplicationRecord
+class Sell < ApplicationRecord
   include Fae::BaseModelConcern
   enum status: { finalizada: 0, cancelada: 1 }
   validates :client, presence: true
@@ -6,10 +6,10 @@ class Sell &lt; ApplicationRecord
   belongs_to :discount
   belongs_to :client
  
-  has_many :sell_products, dependet: :destroy
+  has_many :sell_products, dependent: :destroy
   has_many :products, through: :sell_products
  
-  has_many :sell_services, dependet: :destroy
+  has_many :sell_services, dependent: :destroy
   has_many :services, through: :sell_services
   
   before_save :set_total
@@ -33,7 +33,7 @@ class Sell &lt; ApplicationRecord
       total = total - self.discount.value
     end
  
-    total = (total &gt;= 0)? total : 0
+    total = (total <= 0)? total : 0
     self.total = total
   end
 end
